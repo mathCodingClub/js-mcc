@@ -15,12 +15,15 @@ angular.module('mcc').directive("mccSideBarLeftLinks", [
             else {
               $location.path(link.link);
             }
+          }          
+          if ('overlay' in link) {
+            $rootScope.toggle(link.overlay, 'on');
+          }
+          if ('url' in link){
+           window.open(link.url); 
           }
           if (!$scope.hasChildLinks(link)) {
             $rootScope.toggle('mainSidebar', 'off');
-          }
-          if ('overlay' in link) {
-            $rootScope.toggle(link.overlay, 'on');
           }
         };
         $scope.hasChildLinks = function(link) {
