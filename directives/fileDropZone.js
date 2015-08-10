@@ -6,7 +6,7 @@ angular.module('mcc').directive("mccFileDropZone", function () {
       onDragleave: '=fileDropZoneOnDragleave',
       param: '=fileDropZoneParam'
     },
-    link: function ($scope, element, attrs) {
+    link: function ($scope, element, attrs) {      
       if ($scope.param == undefined) {
         $scope.param = {};
       }
@@ -24,7 +24,7 @@ angular.module('mcc').directive("mccFileDropZone", function () {
         }
       }, false);
 
-      element[0].addEventListener('drop', function (evt) {
+      element[0].addEventListener('drop', function (evt) {        
         evt.preventDefault();
         if ('fileDropZoneMultiple' in attrs) {
           $scope.onDrop(evt.dataTransfer.files, element[0], $scope.param);

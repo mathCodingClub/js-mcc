@@ -4,6 +4,7 @@ angular.module('mcc').directive('mccCodePage',
           function ($rootScope, client) {                  
             return {
               restrict: 'A',
+              replace: false,
               templateUrl: function (element, attrs) {                
                 return 'rest/mcc/templates/codepages/' + attrs.mccCodePage;
               },
@@ -11,7 +12,7 @@ angular.module('mcc').directive('mccCodePage',
                 $scope.dataObject = {};
                 var code = attrs.mccCodePage;
                 $scope.showCodeEditor = function () {                  
-                  client.get(code).then(function (data) {
+                  client.get(code).then(function (data) {                    
                     $scope.dataObject = data.data.data;
                     $rootScope.toggle('mcc.overlayEditorData', 'on');
                   });

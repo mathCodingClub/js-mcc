@@ -17,6 +17,9 @@ angular.module('mcc').directive("mccAjaxScope", ['$http', function($http) {
                 $scope[attrs.mccLoadingVar] == undefined) {
           $scope[attrs.mccLoadingVar] = true;
         }
+        if ('mccAjaxLog' in attrs){
+          console.log('Fetching data from ' + attrs.mccAjaxScope);
+        }
         $http({method: 'GET', url: attrs.mccAjaxScope}).
                 success(function(data, status, headers, config) {
                   if (attrs.mccLoadingVar != undefined) {                    
@@ -32,7 +35,7 @@ angular.module('mcc').directive("mccAjaxScope", ['$http', function($http) {
                   }
                 }).
                 error(function(data, status, headers, config) {
-                  console.log('Error in ajax-scope. There\'s nothing I can do.');
+                  console.log('Error in ajax-scope. There\'s nothing I can do. (url: ' + attrs.mccAjaxScope + ')');
                 });
       }
     };

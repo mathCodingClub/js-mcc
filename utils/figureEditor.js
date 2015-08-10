@@ -8,12 +8,13 @@
       image: null,
       param: null,
       scale: 1,
-      cropPoints: []
+      cropPoints: [],
+      loaderCb: function() {}
     };
     that.param = param;
 
     var getCanvas = function () {
-      if ('canvas' in that.param){
+      if ('canvas' in that.param) {
         return that.param.canvas;
       }
       return document.getElementById(that.param.id);
@@ -23,6 +24,8 @@
     };
     var loader = function () {
       that.img.removeEventListener("load", loader);
+      console.log('loaded');
+      that.loaderCb();
       drawImage();
     };
     var drawCropPoints = function () {
@@ -43,7 +46,7 @@
       }
     };
     var drawImage = function () {
-      var canvas = getCanvas();
+      var canvas = getCanvas();      
       var context = getContext();
       var w = that.img.width;
       var h = that.img.height;
@@ -60,15 +63,17 @@
     /*
      * PUBLIC
      */
-    this.drawFullImage = function (file) {
+    this.drawFullImage = function (file,cb) {
       var reader = new FileReader();
       that.img = new Image();
+      that.loaderCb = cb;
       that.img.addEventListener("load", loader, false);
-      reader.onload = function (evt) {
+      reader.onload = function (evt) {      
         that.img.src = evt.target.result;
       };
       reader.readAsDataURL(file);
     };
+    // crop
     this.setCropPoint = function (x, y) {
       if (that.cropPoints.length < 2) {
         that.cropPoints.push({x: x, y: y});
@@ -91,5 +96,9 @@
       }
       return cropPoints;
     };
-  };
+    // perspective change
+    this.setProjectPoint = function (x, y) {
+
+    }    
+  };  
 }(window.mcc = window.mcc || {}, jQuery));

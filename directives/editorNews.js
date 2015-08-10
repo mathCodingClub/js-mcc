@@ -1,27 +1,32 @@
-angular.module('mcc').directive("mccNewsEditor", ['$http', '$rootScope', 'mcc.toasterTranslate', 'dialogs',
+angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.toasterTranslate', 'dialogs',
   function ($http, $rootScope, toasterTranslate, dialogs) {
     return {
       restrict: "A",
       transclude: true,
       scope: {
-        news: "=mccNewsEditor",
-        cbDelete: "=mccNewsDeleteCb",
-        cbAdd: "=mccNewsSaveCb"
+        news: "=mccEditorNews",
+        cbDelete: "=deleteCb",
+        cbAdd: "=saveCb"
       },
       templateUrl: 'rest/mcc/templates/directives/editorNews',
       link: function ($scope, element, attrs) {
+        $scope.figure = null;
         var layerName = attrs.newsOverlay;
         $scope.editorACE = true;
-        $scope.modify = !('mccNewsNew' in attrs);
-        $scope.fileParams = {};
-        $scope.fe = new mcc.figureEditor({
-          id: 'figureEditorCanvasNews',
-          maxWidth: 750,
-          maxHeight: 500
-        });
+        $scope.modify = !('new' in attrs);
         $scope.show = 'editor';
+        $scope.figureParam =
+                {
+                  ingres: {resize: 400,
+                    type: 'ingress'
+                  },
+                  contents: {
+                    resize: 800,
+                    type: 'contents'
+                  }
+                };
         // cancel figure
-        $scope.cancelFigure = function () {
+        $scope.figureCancel = function () {
           $scope.show = 'editor';
         };
         // delete news
@@ -44,32 +49,23 @@ angular.module('mcc').directive("mccNewsEditor", ['$http', '$rootScope', 'mcc.to
                   }
           );
         };
-        // file submission
+        // after on drop file is received call this
         $scope.fileReceived = function (file, element, params) {
-          $scope.fileParams = params;
-          $scope.file = file;
-          $scope.figure = {
-            name: file.name,
-            maxdim: $scope.fileParams.resize,
-            type: $scope.fileParams.type
-          };
-          if (file.type.indexOf("image") !== -1) {
+          if (file.type.indexOf('image') !== -1) {            
+            $scope.$root.$broadcast('editFigure', {figure: file, params: params});
             $scope.show = 'figure';
-            $scope.fe.drawFullImage(file);
             $scope.$apply();
           }
-        };
-        // follow mouse position
-        $scope.mousePosition = function (x, y) {
-          $scope.mouse = {x: x, y: y};
-          $scope.$apply();
+          else {
+            console.log('Received other file than figure - action not implemented.');
+          }
         };
         // Set to current time
         $scope.setCurrentTime = function () {
-          $http({method: 'GET',            
+          $http({method: 'GET',
             url: 'rest/private/news/' + $scope.news.id + '/settocurrenttime'}).
                   success(function (data, status, headers, config) {
-                    toasterTranslate.success(data.dict);                    
+                    toasterTranslate.success(data.dict);
                   }).
                   error(function (data, status, headers, config) {
                     toasterTranslate.error(data.dict);
@@ -114,49 +110,29 @@ angular.module('mcc').directive("mccNewsEditor", ['$http', '$rootScope', 'mcc.to
                     });
           }
         };
-        // Save figure
-        $scope.saveFigure = function () {
-          var editor = ace.edit('aceEditor_' + $scope.figure.type);
-          var fd = new FormData();
-          fd.append('file', $scope.file);
-          fd.append('resize', $scope.figure.maxdim);
-          fd.append('name', $scope.figure.name);
-          fd.append('crop', JSON.stringify($scope.fe.getCropPoints()));
-          $http.post('rest/private/files', fd, {
-            withCredentials: true,
-            headers: {'Content-Type': undefined},
-            transformRequest: angular.identity
-          }).success(function (data, status, headers, config) {
-            var add;
-            if (data.isImage && $scope.figure.type == 'contents') {
-              add = '<p>\n' +
-                      '  <figure>\n' +
-                      '    <img src="' + data.relPath + '">\n' +
-                      '    <figcaption></figcaption>\n' +
-                      '  </figure>\n' +
-                      '</p>';
-            }
-            else if (data.isImage) {
-              add = '<img src="' + data.relPath + '">\n';
-            }
-            else {
-              add = '<a href="' + data.relPath + '" target="blank"></a>';
-            }
-            editor.insert(add);
-            $scope.$apply();
-            toasterTranslate.common('success', 'FILE_UPLOADED');
-            $scope.show = 'editor';
-          }).error(function (data, status, headers, config) {
-            toasterTranslate.error(data.dict);
-          });
+        // Save file callback
+        $scope.fileSaveCallback = function (data, params) {
+          var editor = ace.edit('aceEditor_' + params.type);
+          var add;
+          if (data.isImage && $scope.figure.type == 'contents') {
+            add = '<p>\n' +
+                    '  <figure>\n' +
+                    '    <img src="' + data.relPath + '">\n' +
+                    '    <figcaption></figcaption>\n' +
+                    '  </figure>\n' +
+                    '</p>';
+          }
+          else if (data.isImage) {
+            add = '<img src="' + data.relPath + '">\n';
+          }
+          else {
+            add = '<a href="' + data.relPath + '" target="blank"></a>';
+          }
+          editor.insert(add);
+          $scope.$apply();
+          toasterTranslate.common('success', 'FILE_UPLOADED');
+          $scope.show = 'editor';
         };
-        // Set crop point
-        $scope.setCropPoint = function () {
-          $scope.fe.setCropPoint($scope.mouse.x, $scope.mouse.y);
-        };
-        $scope.swapEditorType = function() {
-          $scope.editorACE = !$scope.editorACE;
-        }
       }
     };
   }]);
