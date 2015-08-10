@@ -1,6 +1,6 @@
 <?php
 
-$paths = array('mcc.js', '*/*.js');
+$paths = array('mcc.js', 'services/*.js','*/*.js');
 $files = array();
 foreach ($paths as $path) {
   $data = glob($path);
@@ -29,7 +29,7 @@ file_put_contents('mcc-full.js', $string);
 
 // now compile
 $query = array('js_code' => $string,    
-    'compilation_level' => 'SIMPLE_OPTIMIZATIONS',
+    'compilation_level' => 'WHITESPACE_ONLY',
     'output_format' => 'text',
     'output_info' => 'compiled_code');
 $ch = curl_init();
