@@ -16,7 +16,7 @@ foreach ($files as $file) {
   $string .= PHP_EOL . file_get_contents($file);
 }
 
-file_put_contents('mcc-full.js', $string);
+// file_put_contents('mcc-full.js', $string);
 
 /* Compilation levels
  * 
