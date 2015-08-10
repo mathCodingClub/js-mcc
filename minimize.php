@@ -16,7 +16,7 @@ foreach ($files as $file) {
   $string .= PHP_EOL . file_get_contents($file);
 }
 
-// file_put_contents('mcc-full.js', $string);
+file_put_contents('mcc-full.js', $string);
 
 /* Compilation levels
  * 
@@ -29,7 +29,7 @@ foreach ($files as $file) {
 
 // now compile
 $query = array('js_code' => $string,    
-    'compilation_level' => 'WHITESPACE_ONLY',
+    'compilation_level' => 'SIMPLE_OPTIMIZATIONS',
     'output_format' => 'text',
     'output_info' => 'compiled_code');
 $ch = curl_init();

@@ -5,7 +5,7 @@ angular.module('mcc').directive('mccEditorFigure',
               templateUrl: 'rest/mcc/templates/directives/editorFigure',
               scope: {
                 onSave: '=figureSave',
-                onCancel: '=figureCancel',
+                onCancel: '=figureCancel'                
               },
               link: function ($scope, element, attrs) {                                
                 $scope.show = 'loading';
