@@ -49,7 +49,7 @@ angular.module('mcc').directive("mccEditorData", [
         $scope.save = function () {
           delete $scope.data.created;
           delete $scope.data.updated;
-          code.update($scope.data).then(function (data) {
+          code.update($scope.data).then(function (data) {            
             toasterTranslate.report(data.status, data.data.dict);
           });
         };

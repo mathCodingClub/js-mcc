@@ -19,7 +19,7 @@ angular.module('mcc').directive("mccAjaxScope", ['$http', function($http) {
         }
         if ('mccAjaxLog' in attrs){
           console.log('Fetching data from ' + attrs.mccAjaxScope);
-        }
+        }        
         $http({method: 'GET', url: attrs.mccAjaxScope}).
                 success(function(data, status, headers, config) {
                   if (attrs.mccLoadingVar != undefined) {                    
