@@ -114,7 +114,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
         $scope.fileSaveCallback = function (data, params) {
           var editor = ace.edit('aceEditor_' + params.type);
           var add;
-          if (data.isImage && $scope.figure.type == 'contents') {
+          if (data.isImage && params.type == 'contents') {
             add = '<p>\n' +
                     '  <figure>\n' +
                     '    <img src="' + data.relPath + '">\n' +
