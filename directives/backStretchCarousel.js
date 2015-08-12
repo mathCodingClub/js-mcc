@@ -31,7 +31,7 @@ angular.module('mcc').directive('mccBackStretchCarousel', ['$swipe', function ($
         $(element).css('height', height);
         // follow changes in $scope.images and when it changes, init backstretch
         // this allows initiation with $http ajax request that asks for the files
-        $scope.$watch('images', function (images) {
+        $scope.$watch('images', function (images) {          
           if (images.length === 0) { // do nothing is images is empty array
             return;
           }

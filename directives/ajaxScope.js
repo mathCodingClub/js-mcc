@@ -32,6 +32,7 @@ angular.module('mcc').directive("mccAjaxScope", ['$http', function($http) {
                   $scope[attrs.mccAjaxScopeVar] = data;
                   if ('mccAjaxLog' in attrs) {
                     console.log(data);
+                    console.log($scope);
                   }
                 }).
                 error(function(data, status, headers, config) {
