@@ -25,7 +25,7 @@ angular.module('mcc').directive("mccInstagram", ['$http', 'mcc.toasterTranslate'
                   success(function(data, status, headers, config) {
                     if (data.posts.length == 0){
                       $scope.allFetched = true;
-                      $scope.isLoading = false;
+                      $scope.loadingMore = false;
                       return;
                     }
                     // often twitter duplicates in homeline queries retweets
@@ -36,7 +36,7 @@ angular.module('mcc').directive("mccInstagram", ['$http', 'mcc.toasterTranslate'
                       if ($scope.data[0].id == data.posts[0].id){
                         console.log('Pagination does not work. Same data set is always returned.');
                         $scope.allFetched = true;
-                        $scope.isLoading = false;
+                        $scope.loadingMore = false;
                         return;
                       }
                     }                    
