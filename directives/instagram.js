@@ -6,18 +6,50 @@ angular.module('mcc').directive("mccInstagram", ['$http', 'mcc.toasterTranslate'
       templateUrl: 'rest/mcc/templates/directives/instagram',
       link: function ($scope, element, attrs) {
         $scope.isLoading = true;
-        console.log(attrs.url);
-        $http({method: 'GET',
-          url: attrs.url}).
-                success(function (data, status, headers, config) {
-                  $scope.data = data.posts;
-                  $scope.isLoading = false;
-                }).
-                error(function (data, status, headers, config) {
-                  toasterTranslate.error(data.dict);
-                  $scope.isLoading = false;
-                });
-
+        $scope.allFetched = false;
+        $scope.data = [];
+        $scope.load = function() {
+          if ($scope.loadingMore || $scope.allFetched){
+            return;
+          }
+          $scope.loadingMore = true;
+          var maxid;
+          if ($scope.data.length == 0){
+            maxid = '';
+          }
+          else {
+            maxid = '/' + $scope.data[$scope.data.length-1].id;
+          }
+          $http({method: 'GET',
+            url: attrs.url + maxid}).
+                  success(function(data, status, headers, config) {
+                    if (data.posts.length == 0){
+                      $scope.allFetched = true;
+                      return;
+                    }
+                    // often twitter duplicates in homeline queries retweets
+                    if ($scope.data.length > 0){
+                      if ($scope.data[$scope.data.length-1].id == data.posts[0].id){
+                        data.tweets.splice(0,1);
+                      }
+                      if ($scope.data[0].id == data.posts[0].id){
+                        console.log('Pagination does not work. Same data set is always returned.');
+                        $scope.allFetched = true;
+                        return;
+                      }
+                    }                    
+                    $scope.data = $scope.data.concat(data.posts);
+                    $scope.isLoading = false;
+                    $scope.loadingMore = false;
+                  }).
+                  error(function(data, status, headers, config) {
+                    toasterTranslate.error(data.dict);
+                    $scope.isLoading = false;
+                    $scope.loadingMore = false;
+                  });
+        };
+        
+        $scope.load();
       }
-    }
+    };
   }]);
