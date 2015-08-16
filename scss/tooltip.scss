@@ -1,0 +1,30 @@
+.mcc-tooltip {
+  background-color: black;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+}
+.mcc-tooltip-right:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -8px;
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid black;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.mcc-tooltip:after {  
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  width: 0; height: 0;
+  border-right: 8px solid #000000;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}

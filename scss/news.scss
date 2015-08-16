@@ -1,0 +1,66 @@
+@import "../../scss/definitions.scss";
+
+// Ingress
+
+div.mcc-ingress {
+  margin-left: 0px;  
+  max-width: 700px;    
+  margin-bottom: 5px;  
+  overflow: auto;
+}
+
+div.mcc-ingress img {
+  float: right;  
+  margin: 0px 0px 15px 15px;
+  padding: 0px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  div.mcc-ingress {
+    margin-left: 0px;
+    max-width: 400px;  
+  }
+}
+
+@media screen and (min-width: 600px) and  (max-width: 800px) {
+  div.mcc-ingress {
+    margin-left: 0px;
+    max-width: 700px;
+  }
+}
+
+.mcc-draft::before, .mcc-draft::after {
+  content: "DRAFT";
+  text-align: center;
+  font-size: 200%;
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  background-color: rgb(200,200,200);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+// Images
+mcc-news caption {
+  text-align: center;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+// News
+
+.mcc-news img {      
+  border-radius: 4px;  
+}
+
+// Comments
+
+.mcc-comment-reply {
+  background-color: $comment-reply-color;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 2px;
+}  

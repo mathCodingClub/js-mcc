@@ -1,0 +1,215 @@
+@import "../../scss/definitions.scss";
+
+body {
+  font-family: $font-main;
+}
+
+h1 {
+  padding: 0;
+  margin: 10px 0;
+}
+
+.app-content-loading {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.loading-spinner {
+  position: absolute;
+  font-size: 50px;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+// when background folor for text is needed
+.bg-text {
+  background-color: $color-theme;  
+}
+
+.text-center {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {  
+  color: $color-theme;  
+}
+
+.sidebar-logo-text, h1, h2, h3, h4, h5, h6, .navbar-brand, .mcc-sidebar-title {
+  font-family: $font-heading;
+  letter-spacing: 3px;
+}
+
+.sidebar-logo-text {
+  color: white;
+  letter-spacing: 5px;
+  font-size: 300%;  
+}
+
+.navbar-brand {
+  font-size: 200%;
+}
+
+.overlay-dismiss {
+  display: none;
+}
+
+.text-red {
+  color: #ff3333;
+}
+
+.mcc-sidebar-title {      
+  color: white;
+}
+
+.past {
+  text-decoration: line-through;
+}
+
+.list-group-item.active,
+.sidebar-logo-text,
+.mcc-sidebar-title {
+  background-color: $color-theme;
+}
+
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+  background-color: $color-theme;
+  border-color: $color-theme;
+}
+
+.list-group-item.active {
+  border-color: $color-theme;
+}
+
+table.formal {
+  border-collapse: collapse;
+}
+table.formal thead {
+  background-color: $color-theme;
+  color: white;
+  font-weight: bold;
+}
+
+table.formal td {
+  padding: 5px;
+  margin: 0px;
+  border: 1px solid black;
+}
+
+.cursor-arrow {
+  cursor: default;
+}
+
+h2.mcc-sub-title {
+  color: white;
+  font-size: 120%;
+  background-color: $color-theme;
+}
+
+.today, .tomorrow, .next {  
+  color: $color-theme;  
+}
+
+.today {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.tomorrow {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.next {
+  font-size: 110%;
+  font-weight: bold;
+}
+
+.today::before { 
+  content: "{{'TODAY' | translate}}:";
+}
+
+.tomorrow::before { 
+  content: "{{'TOMORROW' | translate}}:";
+}
+
+.next::before { 
+  content: "{{'NEXT' | translate}}:";
+}
+
+figcaption {
+  text-align: center;
+  font-weight: bold;  
+}
+
+.center-table {
+  display: table;
+  margin: auto;  
+}
+
+.active-area {
+  background-color: $color-theme !important;
+  color: white !important;
+}
+
+.area-sub {
+  padding-left: 20px;
+  background-color: darken(#ddd, 5%) !important;
+}
+
+.area-sub:before {
+  content: '\00bb';
+  padding-right: 10px;
+}
+
+.active-area-sub {
+  background-color: lighten($color-theme,60%) !important;  
+  color: black !important;
+  border-color: #ddd !important;
+}
+
+input, .mcc-bs-style {
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;  
+  display: block;  
+}
+
+.mcc-bs-style-heading {
+  line-height: 34px;
+  font-weight: 700;
+}
+
+input {
+  height: 34px;
+  line-height: 1.4285713;
+}
+
+input.small {  
+  padding: 2px;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.only-print {
+  display: none;
+}
+
+.nice-width {
+  max-width: 800px;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+img.embed-media {
+  max-height: 500px; 
+  border-radius: 4px;
+}
