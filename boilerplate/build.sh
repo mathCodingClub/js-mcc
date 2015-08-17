@@ -40,6 +40,8 @@ cp js-mcc/boilerplate/structure/* structure/*
 cp js-mcc/boilerplate/rest/* rest/*
 # templates
 cp js-mcc/boilerplate/templates/* templates/*
+# main
+cp js-mcc/boilerplate/main/index.php index.php
 # javascript minimization
 cd js
 php minimize.php
