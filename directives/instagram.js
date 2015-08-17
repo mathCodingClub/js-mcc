@@ -3,7 +3,7 @@ angular.module('mcc').directive("mccInstagram", ['$sce', '$http', 'mcc.toasterTr
     return {
       restrict: 'E',
       scope: true,
-      templateUrl: 'rest/mcc/templates/directives/instagram',
+      templateUrl: 'mcc.instagram',
       link: function($scope, element, attrs) {
         $scope.isLoading = true;
         $scope.allFetched = false;

@@ -6,7 +6,7 @@ angular.module('mcc').directive("mccTwitter", ['$http', 'mcc.toasterTranslate',
         url: '=url',
         loadingMore: '=disableUrlChange'
       }, // could be true perhaps too, need to check
-      templateUrl: 'rest/mcc/templates/directives/twitter',
+      templateUrl: 'mcc.twitter',
       link: function($scope, element, attrs) {
         $scope.isLoading = true;
         $scope.allFetched = false;

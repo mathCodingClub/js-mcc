@@ -6,7 +6,8 @@ angular.module('mcc').directive("mccLoginOverlay", [
     return {
       restrict: "E",
       scope: true,
-      templateUrl: 'rest/mcc/templates/directives/loginOverlay',
+      //templateUrl: 'rest/mcc/templates/directives/loginOverlay',
+      templateUrl: 'mcc.loginOverlay',
       link: function ($scope, element, attrs) {
         var reset = function () {
           $scope.loginForm = {

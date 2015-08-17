@@ -3,7 +3,7 @@ angular.module('mcc').directive('mccNews', ['$rootScope', 'mcc.newsData',
     return {
       restrict: 'E',
       scope: true,
-      templateUrl: 'rest/mcc/templates/directives/news',
+      templateUrl: 'mcc.news',
       link: function ($scope, element, attrs) {
         $scope.scrollCb = function () {
         };

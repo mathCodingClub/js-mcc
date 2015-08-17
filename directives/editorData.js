@@ -8,7 +8,8 @@ angular.module('mcc').directive("mccEditorData", [
       scope: {
         data: '=overlayData'
       },
-      templateUrl: 'rest/mcc/templates/directives/editorData',
+      //templateUrl: 'rest/mcc/templates/directives/editorData',
+      templateUrl: 'mcc.editorData',
       link: function ($scope, element, attrs) {
         $scope.editorACE = true;        
         $scope.show = 'editor';

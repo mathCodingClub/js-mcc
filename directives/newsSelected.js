@@ -11,7 +11,7 @@ angular.module('mcc').directive('mccNewsSelected', [
     return {
       restrict: 'E',
       scope: true,
-      templateUrl: 'rest/mcc/templates/directives/newsSelected',
+      templateUrl: 'mcc.newsSelected',
       link: function ($scope, element, attrs) {        
         $scope.id = $routeParams.id;
         $scope.news = {title: '', contents: ''};

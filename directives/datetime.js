@@ -5,7 +5,7 @@ angular.module('mcc').directive("mccDatetime", [
       scope: {
         timestamp: '=timestamp'
       },
-      templateUrl: 'rest/mcc/templates/directives/datetime',
+      templateUrl: 'mcc.datetime',
       link: function ($scope, element, attrs) {
         $scope.opts = {
           showWeeks: true,

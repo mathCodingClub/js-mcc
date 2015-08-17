@@ -12,7 +12,7 @@
               function () {
                 return {
                   restrict: restrict,
-                  templateUrl: 'rest/mcc/templates/directives/' + directive
+                  templateUrl: 'mcc.' + directive
                 };
               });
     }

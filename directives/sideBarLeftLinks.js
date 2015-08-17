@@ -5,7 +5,8 @@ angular.module('mcc').directive("mccSideBarLeftLinks", [
     return {
       restrict: 'A',
       scope: {links: '=mccSideBarLeftLinks'},
-      templateUrl: 'rest/mcc/templates/directives/sideBarLeftLinks',
+      templateUrl: 'mcc.sideBarLeftLinks',
+      //templateUrl: 'rest/mcc/templates/directives/sideBarLeftLinks',
       link: function($scope, element, attrs) {
         $scope.click = function(link, parent) {
           if ('link' in link) {

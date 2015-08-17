@@ -2,7 +2,8 @@ angular.module('mcc').directive('mccEditorFigure',
         ['$http', 'mcc.toasterTranslate', function ($http, toasterTranslate) {
             return {
               restrict: 'E',
-              templateUrl: 'rest/mcc/templates/directives/editorFigure',
+              //templateUrl: 'rest/mcc/templates/directives/editorFigure',
+              templateUrl: 'mcc.editorFigure',
               scope: {
                 onSave: '=figureSave',
                 onCancel: '=figureCancel'                

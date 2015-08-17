@@ -8,7 +8,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
         cbDelete: "=deleteCb",
         cbAdd: "=saveCb"
       },
-      templateUrl: 'rest/mcc/templates/directives/editorNews',
+      templateUrl: 'mcc.editorNews',
       link: function ($scope, element, attrs) {
         $scope.figure = null;
         var layerName = attrs.newsOverlay;

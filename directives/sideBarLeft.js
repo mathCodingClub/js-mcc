@@ -3,7 +3,8 @@ angular.module('mcc').directive("mccSideBarLeft", [
     return {
       restrict: 'A',      
       scope: true,
-      templateUrl: 'rest/mcc/templates/directives/sideBarLeft',
+      //templateUrl: 'rest/mcc/templates/directives/sideBarLeft',
+      templateUrl: 'mcc.sideBarLeft',
       link: function ($scope, element, attrs) {
         $scope.sb = CONFIG;                
       }
