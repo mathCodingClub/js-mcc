@@ -42,6 +42,8 @@ cp js-mcc/boilerplate/rest/* rest/*
 cp js-mcc/boilerplate/templates/* templates/*
 # main
 cp js-mcc/boilerplate/main/index.php index.php
+# composer
+cp js-mcc/boilerplate/composer.json php/composer.json
 # javascript minimization
 cd js
 php minimize.php

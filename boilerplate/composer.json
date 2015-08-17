@@ -1,0 +1,15 @@
+{
+  "require": {
+    "slim/slim": "2.*", 
+    "google/apiclient": "1.0.*@beta"
+  },
+  "autoload": {
+    "psr-4": {
+      "WS\\": "../rest/rest/",
+      "repositories\\": "../rest/repositories/",
+      "services\\": "../rest/services/",
+      "mcc\\": "mcc"
+    }
+  },
+  "minimum-stability": "dev"
+}
