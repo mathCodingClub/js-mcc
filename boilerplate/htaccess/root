@@ -1,0 +1,14 @@
+RewriteEngine   On
+RewriteBase     /
+RewriteCond 	%{HTTP_HOST} ^www\.service\.com$ [NC]
+RewriteCond     %{REQUEST_URI} !^(/favicon\.ico|/robots\.txt|/bower|/css|/extra|/fig|/files|/js|/js-mcc|/rest|/templates|/uploads|/mcc\.)
+RewriteCond     %{REQUEST_FILENAME} !-f
+RewriteCond     %{REQUEST_FILENAME} !-d
+RewriteRule     .               /index.php              [L]
+
+RewriteBase     /
+RewriteCond 	%{HTTP_HOST} ^localhost$ [nc]
+RewriteCond     %{REQUEST_URI} !^(/favicon\.ico|/robots\.txt|/bower|/css|/extra|/fig|/files|/js|/js-mcc|/rest|/templates|/uploads|/mcc\.)
+RewriteCond     %{REQUEST_FILENAME} !-f
+RewriteCond     %{REQUEST_FILENAME} !-d
+RewriteRule     .               repository/user/service/index.php              [L]

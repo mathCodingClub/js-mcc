@@ -1,0 +1,96 @@
+{
+  "appName": "angularJsApp",
+  "logoTitle": "SeviceName",
+  "headTitle": "",
+  "description": "",
+  "keywords": "",
+  "author": "Antti Stenvall <antti@stenvall.fi>",
+  "headTemplateUrl": "templates/head.html",
+  "bottomBarTemplateUrl": "templates/bottomBar.html",
+  "sideBarRightTemplateUrl": "templates/sidebarRight.html",
+  "sideBarLeftBottomImage": "fig/xxx.png",
+  "topBar": {
+    "left": "<i class=\"fa fa-bars\"></i> Menu",
+    "mid": "SeviceName",
+    "right": "Links <i class=\"fa fa-external-link\"></i>"
+  },
+  "bases": {
+    "#localhost#": "/xxx/xxx/",
+    "default": "/"
+  },
+  "includes": {
+    "#localhost#": "structure/html5includes-dev.json",
+    "default": "structure/html5includes-live.json"
+  },
+  "ga": {
+    "UA": "UA-xxxxxxxx-1",
+    "domain": "auto"
+  },
+  "nav": [
+    {
+      "link": "",
+      "code": "main"
+    },
+    {
+      "title": "Home",
+      "link": "home",
+      "code": "main"
+    },
+    {
+      "title": "News",
+      "link": "news",
+      "path": "news",
+      "template": "<mcc-news></mcc-news>",
+      "contents": [
+        {
+          "link": ":id",
+          "template": "<mcc-news-selected></mcc-news-selected>"
+        }
+      ],
+      "logo": {
+        "css": "fa fa-newspaper-o"
+      }
+    },
+    {
+      "link": "about",
+      "code": "about",
+      "title": "About"
+    },
+    {
+      "title": "{{\"ADMIN\" | translate}}",
+      "link": "admin/codepage",
+      "path": "admin",
+      "template": "<mcc-code-page-admin></mcc-code-page-admin>",
+      "ishttps": true,
+      "isLoggedIn": true,
+      "logo": {
+        "css": "fa fa-cog"
+      },
+      "contents": [
+        {
+          "title": "{{\"DATA.ADMIN_TITLE\" | translate}}",
+          "link": "codepage",
+          "template": "<mcc-code-page-admin></mcc-code-page-admin>"
+        }
+      ]
+    },
+    {
+      "overlay": "mcc.loginOverlay",
+      "title": "{{\"LOGIN.LOGIN\"| translate}}",
+      "ishttps": true,
+      "isLoggedIn": false,
+      "logo": {
+        "css": "fa fa-cogs"
+      }
+    },
+    {
+      "overlay": "mcc.loginOverlay",
+      "title": "{{\"LOGIN.LOGGED_IN_AS\"| translate}} <b>{{$root.user.name}}</b>",
+      "ishttps": true,
+      "isLoggedIn": true,
+      "logo": {
+        "css": "fa fa-cogs"
+      }
+    }
+  ]
+}
