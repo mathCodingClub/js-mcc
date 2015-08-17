@@ -33,7 +33,7 @@
     "angular-ui-bootstrap-datetimepicker": "~0.11.2"
   },
   "resolutions": {
-    "angular": "1.4.3",
+    "angular": "1.4.4",
     "jquery": "~1.9.1",
     "webcomponentsjs": "^0.6.0"
   }

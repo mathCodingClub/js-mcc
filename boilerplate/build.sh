@@ -28,7 +28,7 @@ chmod 777 uploads/local
 # javascript and boilerplate code
 git clone https://github.com/mathCodingClub/js-mcc.git
 # js
-cp js-mcc/boilerplate/js/* js/
+cp -r js-mcc/boilerplate/js/* js/
 # scss
 cp js-mcc/boilerplate/scss/* scss/
 # structure
@@ -37,7 +37,7 @@ cp js-mcc/boilerplate/htaccess/root .htaccess
 cp js-mcc/boilerplate/htaccess/rest rest/.htaccess
 # rest
 cp js-mcc/boilerplate/structure/* structure/*
-cp js-mcc/boilerplate/rest/* rest/*
+cp -r js-mcc/boilerplate/rest/* rest/*
 # templates
 cp js-mcc/boilerplate/templates/* templates/*
 # main
