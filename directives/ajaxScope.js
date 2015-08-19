@@ -25,6 +25,7 @@ angular.module('mcc').directive("mccAjaxScope", ['$http',
             url += $routeParams[attrs.mccAjaxScopeRouteParam];
           }
           else {
+            $scope[attrs.mccLoadingVar] = !$scope[attrs.mccLoadingVar];
             return;
           }
         }
