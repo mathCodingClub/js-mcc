@@ -8,11 +8,17 @@ angular.module('mcc').directive("mccTwitter", ['$http', 'mcc.toasterTranslate',
       }, // could be true perhaps too, need to check
       templateUrl: 'mcc.twitter',
       link: function($scope, element, attrs) {
+        if ($scope.loadingMore == undefined){
+          $scope.loadingMore = false;
+        }
         $scope.isLoading = true;
         $scope.allFetched = false;
         $scope.data = [];
 
         $scope.$watch('url', function() {          
+          if ($scope.loadingMore || $scope.allFetched){
+            return;
+          }
           if ($scope.url.length > 5) {
             $scope.data = [];
             $scope.allFetched = false;
@@ -20,7 +26,7 @@ angular.module('mcc').directive("mccTwitter", ['$http', 'mcc.toasterTranslate',
           }
         });
 
-        $scope.load = function() {          
+        $scope.load = function() {              
           if ($scope.loadingMore || $scope.allFetched) {            
             return;
           }
@@ -31,7 +37,7 @@ angular.module('mcc').directive("mccTwitter", ['$http', 'mcc.toasterTranslate',
           }
           else {
             maxid = '/' + $scope.data[$scope.data.length - 1].id;
-          }
+          }          
           $http({method: 'GET',
             url: $scope.url + maxid}).
                   success(function(data, status, headers, config) {

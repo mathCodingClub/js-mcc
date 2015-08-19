@@ -1,14 +1,15 @@
 angular.module('mcc').directive("mccEditorData", [
+  '$rootScope',
+  '$window',
   'mcc.toasterTranslate',
   'mcc.code',
-  function (toasterTranslate, code) {
+  function ($rootScope,$window,toasterTranslate, code) {
     return {
       restrict: 'A',
       transclude: true,
       scope: {
         data: '=overlayData'
-      },
-      //templateUrl: 'rest/mcc/templates/directives/editorData',
+      },      
       templateUrl: 'mcc.editorData',
       link: function ($scope, element, attrs) {
         $scope.editorACE = true;        
@@ -53,6 +54,10 @@ angular.module('mcc').directive("mccEditorData", [
           code.update($scope.data).then(function (data) {            
             toasterTranslate.report(data.status, data.data.dict);
           });
+        };
+        $scope.cancel = function(){          
+          $rootScope.toggle('mcc.overlayEditorData', 'off');
+          $window.location.reload();          
         };
       }
     };
