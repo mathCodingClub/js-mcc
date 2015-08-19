@@ -19,9 +19,8 @@ mkdir rest/services
 mkdir scss
 mkdir structure
 mkdir templates
-mkdir fig
 mkdir uploads
-mkdir local
+mkdir uploads/local
 chmod 777 uploads
 chmod 777 uploads/local
 
@@ -32,14 +31,13 @@ cp -r js-mcc/boilerplate/js/* js/
 # scss
 cp js-mcc/boilerplate/scss/* scss/
 # structure
-cp js-mcc/boilerplate/structure/* structure/*
+cp js-mcc/boilerplate/structure/* structure/
 cp js-mcc/boilerplate/htaccess/root .htaccess
 cp js-mcc/boilerplate/htaccess/rest rest/.htaccess
 # rest
-cp js-mcc/boilerplate/structure/* structure/*
-cp -r js-mcc/boilerplate/rest/* rest/*
+cp -r js-mcc/boilerplate/rest/* rest/
 # templates
-cp js-mcc/boilerplate/templates/* templates/*
+cp js-mcc/boilerplate/templates/* templates/
 # main
 cp js-mcc/boilerplate/main/index.php index.php
 # composer
@@ -54,6 +52,11 @@ cd ..
 # bower
 cp js-mcc/boilerplate/.bowerrc .
 cp js-mcc/boilerplate/bower.json .
+# On failure may need
+# sudo bower cache clean --allow-root
+# sudo bower install --allow-root
+# sudo chown -R $USER bower
+bower cache clean
 bower install
 
 # init php backend
