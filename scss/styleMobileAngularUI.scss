@@ -130,6 +130,7 @@ h2.mcc-sub-title {
   font-weight: bold;
 }
 
+/*
 .today::before { 
   content: "{{'TODAY' | translate}}:";
 }
@@ -141,6 +142,7 @@ h2.mcc-sub-title {
 .next::before { 
   content: "{{'NEXT' | translate}}:";
 }
+*/
 
 figcaption {
   text-align: center;
