@@ -159,7 +159,8 @@ figcaption {
 
 .area-sub {
   padding-left: 20px;
-  background-color: darken(#ddd, 5%) !important;
+  background-color: lighten($color-sub, 20%) !important;
+  //background-color: lighten($color-theme, 60%) !important;
 }
 
 .area-sub:before {
@@ -168,7 +169,8 @@ figcaption {
 }
 
 .active-area-sub {
-  background-color: lighten($color-theme,60%) !important;  
+  background-color: $color-sub !important;  
+  //background-color: lighten($color-theme, 30%) !important;  
   color: black !important;
   border-color: #ddd !important;
 }

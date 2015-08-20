@@ -57,7 +57,7 @@ angular.module('mcc').directive("mccEditorData", [
         };
         $scope.cancel = function(){          
           $rootScope.toggle('mcc.overlayEditorData', 'off');
-          $window.location.reload();          
+          // $window.location.reload();          
         };
       }
     };
