@@ -1,4 +1,5 @@
 @import "../../scss/definitions.scss";
+@import "functions/colors.scss";
 
 body {
   font-family: $font-main;
@@ -29,6 +30,7 @@ h1 {
 // when background folor for text is needed
 .bg-text {
   background-color: $color-theme;  
+  color: contrasting-color-bw($color-theme);
 }
 
 .text-center {
@@ -74,16 +76,19 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .sidebar-logo-text,
 .mcc-sidebar-title {
   background-color: $color-theme;
+  color: contrasting-color-bw($color-theme);
 }
 
 .list-group-item.active:focus,
 .list-group-item.active:hover {
   background-color: $color-theme;
   border-color: $color-theme;
+  color: contrasting-color-bw($color-theme);
 }
 
 .list-group-item.active {
   border-color: $color-theme;
+  color: contrasting-color-bw($color-theme);
 }
 
 table.formal {
@@ -91,7 +96,7 @@ table.formal {
 }
 table.formal thead {
   background-color: $color-theme;
-  color: white;
+  color: contrasting-color-bw($color-theme);  
   font-weight: bold;
 }
 
@@ -105,10 +110,10 @@ table.formal td {
   cursor: default;
 }
 
-h2.mcc-sub-title {
-  color: white;
+h2.mcc-sub-title {  
   font-size: 120%;
   background-color: $color-theme;
+  color: contrasting-color-bw($color-theme);
 }
 
 .today, .tomorrow, .next {  
@@ -130,20 +135,6 @@ h2.mcc-sub-title {
   font-weight: bold;
 }
 
-/*
-.today::before { 
-  content: "{{'TODAY' | translate}}:";
-}
-
-.tomorrow::before { 
-  content: "{{'TOMORROW' | translate}}:";
-}
-
-.next::before { 
-  content: "{{'NEXT' | translate}}:";
-}
-*/
-
 figcaption {
   text-align: center;
   font-weight: bold;  
@@ -156,13 +147,13 @@ figcaption {
 
 .active-area {
   background-color: $color-theme !important;
-  color: white !important;
+  color: contrasting-color-bw($color-theme) !important;
 }
 
 .area-sub {
   padding-left: 20px;
   background-color: lighten($color-sub, 20%) !important;
-  //background-color: lighten($color-theme, 60%) !important;
+  color: contrasting-color-bw(lighten($color-sub, 20%)) !important;
 }
 
 .area-sub:before {
@@ -173,7 +164,7 @@ figcaption {
 .active-area-sub {
   background-color: $color-sub !important;  
   //background-color: lighten($color-theme, 30%) !important;  
-  color: black !important;
+  color: contrasting-color-bw($color-sub) !important;
   border-color: #ddd !important;
 }
 
