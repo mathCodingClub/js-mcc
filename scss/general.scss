@@ -1,3 +1,5 @@
+@import "../../scss/definitions.scss";
+
 .mcc-nice-width {
   max-width: 800px;
 }
@@ -5,4 +7,13 @@
 video {
   width: 100% !important;
   height: auto !important;
+}
+
+.mcc-link {
+  color: $color-link;
+  text-decoration: none;
+}
+
+.mcc-link:hover {
+  color: darken($color-link, 20%);
 }

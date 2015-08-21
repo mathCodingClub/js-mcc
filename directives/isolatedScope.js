@@ -3,8 +3,7 @@ angular.module('mcc').directive('mccIsolatedScope',
             return {
               restrict: 'AE',
               scope: {},
-              link: function ($scope, element, attrs) {         
-                console.log($scope);
+              link: function ($scope, element, attrs) {                         
               }
             };
           }]
