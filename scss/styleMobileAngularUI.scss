@@ -208,3 +208,8 @@ img.embed-media {
   max-height: 500px; 
   border-radius: 4px;
 }
+
+.mcc-hover-side-bar:hover {
+  background-color: lighten($color-theme,60%) !important;
+  color: contrasting-color-bw(lighten($color-theme,60%)) !important;  
+}
