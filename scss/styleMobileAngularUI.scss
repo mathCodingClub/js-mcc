@@ -209,7 +209,7 @@ img.embed-media {
   border-radius: 4px;
 }
 
-.mcc-hover-side-bar:active {
+.mcc-hover-side-bar:active, .mcc-hover-side-bar:hover {
   background-color: lighten($color-theme,30%) !important;
   color: contrasting-color-bw(lighten($color-theme,30%)) !important;  
 }
