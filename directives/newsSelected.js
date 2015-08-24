@@ -36,7 +36,7 @@ angular.module('mcc').directive('mccNewsSelected', [
         // load comments
         $scope.loadComments = function () {
           $http({method: 'GET',
-            url: 'rest/news/comments/' + $scope.id}).
+            url: 'rest/mcc/news/comments/' + $scope.id}).
                   success(function (data, status, headers, config) {
                     $scope.comments = data.comments;
                   }).
@@ -48,7 +48,7 @@ angular.module('mcc').directive('mccNewsSelected', [
         $scope.postReply = function (index) {
           $http({method: 'PUT',
             data: $scope.comments[index],
-            url: 'rest/private/news/comment'}).
+            url: 'rest/mcc/private/news/comment'}).
                   success(function (data, status, headers, config) {
                     toasterTranslate.success(data.dict);
                     resetComments();
@@ -62,7 +62,7 @@ angular.module('mcc').directive('mccNewsSelected', [
           var dlg = dialogs.confirm(undefined, undefined, {size: 'sm'});
           dlg.result.then(function () {
             $http({method: 'DELETE',
-              url: 'rest/private/news/comment/' + commentId}).
+              url: 'rest/mcc/private/news/comment/' + commentId}).
                     success(function (data, status, headers, config) {
                       toasterTranslate.success(data.dict);
                       $scope.loadComments();

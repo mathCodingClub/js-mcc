@@ -1,10 +1,10 @@
-angular.module('mcc').directive('mccCodePageAdmin',
+angular.module('mcc').directive('mccTemplateAdmin',
         ['$rootScope',
           'mcc.code',
           function ($rootScope, client) {
             return {
               restrict: 'E',
-              templateUrl: 'mcc.codePageAdmin',              
+              templateUrl: 'mcc.templateAdmin',              
               link: function ($scope, element, attrs) {                
                 $scope.dataObject = {};
                 $scope.showCodeEditor = function (code) {

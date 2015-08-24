@@ -17,7 +17,7 @@ angular.module('mcc').service('mcc.newsData', function ($http, $q, $localStorage
     if (data == null || data.news == null || data.news.length == 0 || (timeStamp - data.updated) > 1000 * 600) {
       return getTitles(0);
     }
-    var fun = get('rest/news/latest/timestamp');
+    var fun = get('rest/mcc/news/latest/timestamp');
     var deferred = $q.defer();
     fun().then(function (entry) {
       if (latestTimestamp == entry.timestamp) {
@@ -44,18 +44,18 @@ angular.module('mcc').service('mcc.newsData', function ($http, $q, $localStorage
   var getTitles = function (from) {
     from = (arguments.length === 1) ? from : 0;
     if (from == 0) {
-      var latest = get('rest/news/latest/timestamp');
+      var latest = get('rest/mcc/news/latest/timestamp');
       latest().then(function (data) {
         $localStorage.newsTimestamp = data.timestamp;
       });
     }
-    var fun = get('rest/news/titles/' + from);
+    var fun = get('rest/mcc/news/titles/' + from);
     return fun();
   };
 
 
   var getById = function (id) {
-    var fun = get('rest/news/' + id);
+    var fun = get('rest/mcc/news/' + id);
     return fun();
   };
 

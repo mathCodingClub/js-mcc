@@ -1,4 +1,4 @@
-angular.module('mcc').directive('mccCodePageCreate',
+angular.module('mcc').directive('mccTemplateCreate',
         ['$route',
           'mcc.code',
           'mcc.toasterTranslate',
@@ -9,11 +9,12 @@ angular.module('mcc').directive('mccCodePageCreate',
               link: function ($scope, element, attrs) {
                 $scope.create = function () {
                   var obj = {
-                    code: attrs.mccCodePageCreate,
-                    title: attrs.mccCodePageCreate
+                    code: attrs.mccTemplateCreate,
+                    title: attrs.mccTemplateCreate
                   };
                   client.create(obj).then(function (data) {
-                    toasterTranslate.success(data.dict);                    
+                    toasterTranslate.success(data.dict);          
+                    $route.reload();
                   });
                 }
               }

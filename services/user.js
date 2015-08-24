@@ -7,7 +7,7 @@ angular.module('mcc').service('mcc.user',
             obj.autoLogin = function () {
               if ($rootScope.ishttps) {
                 $http({method: 'GET',
-                  url: 'rest/private/auth'}).
+                  url: 'rest/mcc/private/auth'}).
                         success(function (data, status, headers, config) {
                           $rootScope.isLoggedIn = true;
                           $rootScope.user = data.user;
@@ -26,14 +26,14 @@ angular.module('mcc').service('mcc.user',
               };
               return $http({method: 'POST',
                 data: data,
-                url: 'rest/private/auth'});
+                url: 'rest/mcc/private/auth'});
             };
 
             obj.logout = function () {
               delete $localStorage.user;
               delete $localStorage.isLoggedIn;
               return $http({method: 'GET',
-                url: 'rest/private/auth/logout'});
+                url: 'rest/mcc/private/auth/logout'});
             };
 
             obj.setLoginData = function (isLoggedIn, data) {

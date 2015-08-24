@@ -32,7 +32,7 @@ angular.module('mcc').directive("mccEditorData", [
             add = '<a href="' + data.relPath + '" target="blank"></a>';
           }
           editor.insert(add);
-          $scope.show = 'editor';
+          $scope.show = 'editor';                    
         };
         // after on drop file is received call this
         $scope.fileReceived = function (file) {

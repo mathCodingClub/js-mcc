@@ -12,7 +12,7 @@
         obj = {template: data.template};
       }
       else if ('code' in data) {
-        obj = {template: '<div mcc-code-page="' + data.code + '"></div>'};
+        obj = {template: '<div mcc-template="' + data.code + '"></div>'};
       }
       else if ('templateUrl' in data) {
         obj = {templateUrl: data.templateUrl};

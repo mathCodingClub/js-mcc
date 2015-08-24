@@ -34,7 +34,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
           var dlg = dialogs.confirm(undefined, undefined, {size: 'sm'});
           dlg.result.then(function () {
             $http({method: 'DELETE',
-              url: 'rest/private/news/' + id}).
+              url: 'rest/mcc/private/news/' + id}).
                     success(function (data, status, headers, config) {
                       toasterTranslate.success(data.dict);
                       $rootScope.toggle(layerName, 'off');
@@ -63,7 +63,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
         // Set to current time
         $scope.setCurrentTime = function () {
           $http({method: 'GET',
-            url: 'rest/private/news/' + $scope.news.id + '/settocurrenttime'}).
+            url: 'rest/mcc/private/news/' + $scope.news.id + '/settocurrenttime'}).
                   success(function (data, status, headers, config) {
                     toasterTranslate.success(data.dict);
                   }).
@@ -85,7 +85,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
                 ingress: $scope.news.ingress,
                 published: $scope.news.published
               },
-              url: 'rest/private/news'}).
+              url: 'rest/mcc/private/news'}).
                     success(function (data, status, headers, config) {
                       toasterTranslate.success(data.dict);
                       $rootScope.toggle(layerName, 'off');
@@ -98,7 +98,7 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
           else {
             $http({method: 'PUT',
               data: $scope.news,
-              url: 'rest/private/news'}).
+              url: 'rest/mcc/private/news'}).
                     success(function (data, status, headers, config) {
                       toasterTranslate.success(data.dict);
                       if (close) {
@@ -129,9 +129,9 @@ angular.module('mcc').directive("mccEditorNews", ['$http', '$rootScope', 'mcc.to
             add = '<a href="' + data.relPath + '" target="blank"></a>';
           }
           editor.insert(add);
-          $scope.$apply();
           toasterTranslate.common('success', 'FILE_UPLOADED');
           $scope.show = 'editor';
+          // $scope.$apply();          
         };
       }
     };
