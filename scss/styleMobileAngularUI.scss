@@ -213,3 +213,8 @@ img.embed-media {
   background-color: lighten($color-theme,30%) !important;
   color: contrasting-color-bw(lighten($color-theme,30%)) !important;  
 }
+
+.list-group-item img {
+  max-height: 500px; 
+  border-radius: 4px;
+}
