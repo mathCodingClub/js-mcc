@@ -99,7 +99,7 @@ angular.module('mcc').directive('mccBackStretchCarousel', ['$swipe', function ($
             $(elements[i]).addClass('active');
             index = i;
           });
-          $(div).addClass('mccBackStretchCarouselList')
+          $(div).addClass('mcc-back-stretch-carousel-list')
                   .appendTo(element);
           var clicker = function (el, ind) {
             $(el).bind('click touch', function () {

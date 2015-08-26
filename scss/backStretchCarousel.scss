@@ -1,0 +1,27 @@
+div.mcc-back-stretch-carousel-list {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  text-align: center;  
+}
+
+div.mcc-back-stretch-carousel-list a {  
+  font-size: 1px;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgb(160,160,160);
+  border: 0px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  cursor: hand;
+  box-shadow:inset 0px 0px 6px 2px rgb(255,255,255);
+}
+
+div.mcc-back-stretch-carousel-list a.active {
+  background-color: rgb(80,80,80);
+  box-shadow:inset 0px 0px 0px 2px rgb(255,255,255);
+}
