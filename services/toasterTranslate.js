@@ -26,7 +26,7 @@ angular.module('mcc').service('mcc.toasterTranslate',
               $translate([styleKey, key]).then(function (lang) {
                 toaster.pop(style, lang[styleKey] + '!', lang[key]);
               });
-            }
+            };
 
             return {
               error: error,
