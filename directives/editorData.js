@@ -59,6 +59,13 @@ angular.module('mcc').directive("mccEditorData", [
           $rootScope.toggle('mcc.overlayEditorData', 'off');
           // $window.location.reload();          
         };
+        $scope.indent = function(){
+          // DOES NOT WORK
+          var code = ace.edit('aceEditor_content').getValue();
+          console.log(code);
+          $scope.data.content = code;
+        };
+        
       }
     };
   }]);

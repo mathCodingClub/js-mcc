@@ -44,7 +44,7 @@ div.mcc-ingress img {
 }
 
 // Images
-mcc-news caption {
+mcc-news caption, caption {
   text-align: center;
   font-weight: bold;
   font-size: 120%;
@@ -54,6 +54,11 @@ mcc-news caption {
 
 .mcc-news img {      
   border-radius: 4px;  
+}
+
+img {
+  display: table;
+  margin: auto;  
 }
 
 // Comments
