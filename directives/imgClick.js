@@ -14,6 +14,7 @@ angular.module('mcc').directive('mccImgClick',
                     }
                 };                                                
                 element.bind('tap click', clickFun);                                               
+                $(element).addClass('hand');
               }
             };
           }]
