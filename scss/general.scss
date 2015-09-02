@@ -21,3 +21,16 @@ video {
 ul {
   padding-left: 20px;  
 }
+
+img {
+  display: table;
+  margin: auto;  
+}
+
+.mcc-inline {
+  display: inline !important;
+}
+
+.mcc-block {
+  display: block !important;
+}
