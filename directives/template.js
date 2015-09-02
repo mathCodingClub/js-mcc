@@ -1,8 +1,9 @@
 angular.module('mcc').directive('mccTemplate',
         ['$rootScope',
           '$window',
+          '$timeout',
           'mcc.code',
-          function ($rootScope, $window, client) {
+          function ($rootScope, $window, $timeout, client) {
             return {
               restrict: 'A',
               replace: false,
@@ -10,6 +11,13 @@ angular.module('mcc').directive('mccTemplate',
                 return 'rest/mcc/templates/' + attrs.mccTemplate;
               },
               link: function ($scope, element, attrs) {
+
+                if (MathJax != undefined){
+                 $timeout(function () {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                  }, 0);
+                }
+
                 $scope.dataObject = {};
                 var code = attrs.mccTemplate;
                 $scope.refresh = function () {
