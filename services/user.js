@@ -36,14 +36,12 @@ angular.module('mcc').service('mcc.user',
                 url: 'rest/mcc/private/auth/logout'});
             };
 
-            obj.setLoginData = function (isLoggedIn, data) {
-              // don't know why referencing does not work;
+            obj.setLoginData = function (isLoggedIn, data) {              
               $rootScope.isLoggedIn = isLoggedIn;
               if (arguments.length == 2 && isLoggedIn) {
                 for (var f in data){
                   $rootScope.user[f] = data[f];
-                }
-                // $rootScope.user = data.user;
+                }                
               } else {
                 $rootScope.user = {};
               }

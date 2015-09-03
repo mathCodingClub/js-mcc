@@ -16,9 +16,9 @@ angular.module('mcc').directive('mccBindKeys', function () {
         // ctrl-*
         var meta = attrs.mccBindKeys.match(/ctrl-[a-z]/);
         if (meta && evt.metaKey) {                    
-          var char = meta[0][5];                
-          if (String.fromCharCode(evt.which).toLowerCase() === char) {                        
-            $scope[attrs['bindKeysCtrl' + char.toUpperCase()]](evt);
+          var ch = meta[0][5];                
+          if (String.fromCharCode(evt.which).toLowerCase() === ch) {                        
+            $scope[attrs['bindKeysCtrl' + ch.toUpperCase()]](evt);
             evt.preventDefault();
           }
         }
