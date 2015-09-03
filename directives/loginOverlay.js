@@ -9,6 +9,9 @@ angular.module('mcc').directive("mccLoginOverlay", [
       //templateUrl: 'rest/mcc/templates/directives/loginOverlay',
       templateUrl: 'mcc.loginOverlay',
       link: function ($scope, element, attrs) {
+        $scope.focus = function(evt){          
+          $('#mccLoginOverlayUsername').focus();
+        };
         var reset = function () {
           $scope.loginForm = {
             username: '',
@@ -22,7 +25,8 @@ angular.module('mcc').directive("mccLoginOverlay", [
           user.login($scope.loginform.username, $scope.loginform.password).
                   success(function (data, status, headers, config) {
                     $rootScope.toggle('mcc.loginOverlay', 'off');
-                    user.setLoginData(true, data);
+                    $scope.loginInProgress = false;
+                    user.setLoginData(true, data.user);                    
                     toasterTranslate.success(data.dict);
                     reset();
                   }).

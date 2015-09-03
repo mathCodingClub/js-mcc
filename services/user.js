@@ -37,9 +37,13 @@ angular.module('mcc').service('mcc.user',
             };
 
             obj.setLoginData = function (isLoggedIn, data) {
+              // don't know why referencing does not work;
               $rootScope.isLoggedIn = isLoggedIn;
               if (arguments.length == 2 && isLoggedIn) {
-                $rootScope.user = data.user;
+                for (var f in data){
+                  $rootScope.user[f] = data[f];
+                }
+                // $rootScope.user = data.user;
               } else {
                 $rootScope.user = {};
               }

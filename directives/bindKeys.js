@@ -1,11 +1,32 @@
-angular.module('mcc').directive("mccBindKeys", function () {
+/* Bind ctrl-* and Enter keys to element (like input)
+ * 
+ * example:
+ * mcc-bind-keys="enter|ctrl-s|ctrl-z"
+ * bind-keys-enter="pressEnter"
+ * bind-keys-ctrl-s="pressCtrlAndSSimultaneously"
+ * bind-keys-ctrl-z="clickedAnotherMetaThing"
+ * Given bind function is called with triggered event
+ */
+
+angular.module('mcc').directive('mccBindKeys', function () {
   return {restrict: 'A',
     link: function ($scope, element, attrs) {
-      $(element).keydown(function (evt) {
-        if (evt.metaKey && evt.keyCode === 83) {
-          $scope[attrs.bindKeysCtrlS](false);
-          evt.preventDefault();
+      var bind = 'bindTo' in attrs ? attrs.bindTo : 'keydown';        
+      $(element)[bind](function (evt) {
+        // ctrl-*
+        var meta = attrs.mccBindKeys.match(/ctrl-[a-z]/);
+        if (meta && evt.metaKey) {                    
+          var char = meta[0][5];                
+          if (String.fromCharCode(evt.which).toLowerCase() === char) {                        
+            $scope[attrs['bindKeysCtrl' + char.toUpperCase()]](evt);
+            evt.preventDefault();
+          }
         }
+        // element
+        if (evt.which === 13 && attrs.mccBindKeys.match(/enter/)){
+            $scope[attrs.bindKeysEnter](evt);
+            evt.preventDefault();
+        }                
       });
     }
   };
