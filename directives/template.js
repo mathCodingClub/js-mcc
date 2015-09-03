@@ -10,9 +10,8 @@ angular.module('mcc').directive('mccTemplate',
               templateUrl: function (element, attrs) {
                 return 'rest/mcc/templates/' + attrs.mccTemplate;
               },
-              link: function ($scope, element, attrs) {
-
-                if (MathJax != undefined){
+              link: function ($scope, element, attrs) {                
+                if (typeof MathJax !== 'undefined'){
                  $timeout(function () {
                     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                   }, 0);
