@@ -19,9 +19,6 @@ angular.module('mcc').directive('mccTemplate',
 
                 $scope.dataObject = {};
                 var code = attrs.mccTemplate;
-                $scope.refresh = function () {
-                  $window.location.reload();
-                };
 
                 $scope.showCodeEditor = function () {
                   client.get(code).then(function (data) {

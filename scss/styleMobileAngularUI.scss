@@ -218,3 +218,7 @@ img.embed-media {
   max-height: 500px; 
   border-radius: 4px;
 }
+
+.list-group-item > * {
+  max-width: 800px;
+}
