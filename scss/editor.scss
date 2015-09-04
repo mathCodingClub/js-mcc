@@ -5,8 +5,11 @@
   padding-bottom: 50px;
 }
 
-.mcc-editor-container textarea {
-  font-family: monospace, courier, courier-new;
+.mcc-editor-container textarea, textarea.mcc-editor {
+  margin: 0px;
+  padding: 2px;
+  font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;  
   border-radius: 4px;
   border: 1px solid rgb(200,200,200);  
+  display: block;
 }
