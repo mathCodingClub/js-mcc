@@ -13,6 +13,7 @@ angular.module('mcc').directive('mccBindKeys', function () {
     link: function ($scope, element, attrs) {
       var bind = 'bindTo' in attrs ? attrs.bindTo : 'keydown';        
       $(element)[bind](function (evt) {
+        console.log(evt);
         // ctrl-*
         var meta = attrs.mccBindKeys.match(/ctrl-[a-z]/);
         if (meta && evt.metaKey) {                    
