@@ -10,13 +10,16 @@ angular.module('mcc').directive("mccPagination", [
         }
         else {
           container = element;
-        }
+        }        
         var heightMargin = 'heightMargin' in attrs ? attrs.heightMargin : 0;
         container.bind('scroll', function() {
           var pos = window.innerHeight + container[0].scrollTop;
-          var height = container[0].scrollHeight - heightMargin;
-          if (pos > height) {
-            $scope.fun();
+          var height = container[0].scrollHeight - heightMargin;         
+          if (pos > height) {                           
+            $scope.fun();            
+            if ('forceScroll' in attrs){
+             setTimeout(function(){$(container).scrollTop((height+pos)/2);},20);            
+            }
           }
         });
       }

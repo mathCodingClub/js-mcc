@@ -25,9 +25,10 @@
         obj.controller = data.controller;
       }
       $routeProvider.when(path + data.link, obj);
+      // console.log('Adding route : ' + path + data.link);      
       if (data.contents) {
         for (var i = 0; i < data.contents.length; i++) {
-          mcc.route.add(path + data.path + '/', data.contents[i], $routeProvider);
+          mcc.route.add(path + data.path + '/', data.contents[i], $routeProvider);          
         }
       }
     }

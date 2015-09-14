@@ -1,4 +1,4 @@
-angular.module('mcc').directive('mccNews', ['$rootScope', 'mcc.newsData', 
+angular.module('mcc').directive('mccNews', ['$rootScope', 'mcc.newsData',
   function ($rootScope, newsData) {
     return {
       restrict: 'E',
@@ -16,40 +16,45 @@ angular.module('mcc').directive('mccNews', ['$rootScope', 'mcc.newsData',
 
         init();
 
-        var loadedHandle = function (data) {
-          $scope.news.pagination = data.pagination;          
-          $scope.news.data = $scope.news.data.concat(data.news);          
+        $scope.loadedHandle = function (data) {
+          if ($scope.isInitialized) {            
+            //return;
+          }
+          $scope.news.pagination = data.pagination;
+          $scope.news.data = $scope.news.data.concat(data.news);
           $scope.loadInProgress = false;
           $scope.isInitialized = true;
-          newsData.saveToLocalStorage($scope.news);
+          newsData.saveToLocalStorage($scope.news);          
         };
 
-        var load = function () {
-          $scope.loadInProgress = true;
-          newsData.getTitles($scope.news.data.length).then(loadedHandle);
+        $scope.load = function () {                              
+          $scope.$apply(function () {
+            $scope.loadInProgress = true;                        
+            newsData.getTitles($scope.news.data.length).then($scope.loadedHandle);
+          });
         };
 
-        $scope.addedNew = function(){
+        $scope.addedNew = function () {
           $scope.refresh();
-          $rootScope.toggle('mcc.overlayEditorNews', 'off');          
+          $rootScope.toggle('mcc.overlayEditorNews', 'off');
         };
 
         $scope.refresh = function () {
           $scope.newNews = {published: false, contents: "", ingress: "", title: ""};
           newsData.reset();
           init();
-          load();
+          $scope.load();
         };
 
         $scope.atTheEnd = function () {
           if ($scope.loadInProgress || $scope.news.pagination.isLast) {
             return;
           }
-          load();
+          $scope.load();
         };
 
         // init news
-        newsData.init().then(loadedHandle);
+        newsData.init().then($scope.loadedHandle);
       }
     };
   }]);

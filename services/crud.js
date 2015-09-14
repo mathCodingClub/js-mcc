@@ -1,5 +1,9 @@
 angular.module('mcc').service('mcc.crud',
-        ['mcc.$http', function (http) {
+        ['$window',
+          'mcc.$http',
+          'mcc.toasterTranslate',
+          'dialogs',
+          function ($window, http, toasterTranslate, dialogs) {
             return function (urlBasePrivate, urlBasePublic, objectKey, parentKey) {
               var hasParent = (arguments.length === 4);
               var addFun;
@@ -33,10 +37,10 @@ angular.module('mcc').service('mcc.crud',
               }
               else {
                 getAllFun = function () {
-                  return http.getViaDefer(urlBasePrivate + objectKey + '_all');
+                  return http.getViaDefer(urlBasePrivate + objectKey + '/all');
                 };
                 getAllPubFun = function () {
-                  return http.getViaDefer(urlBasePrivate + objectKey + '_all');
+                  return http.getViaDefer(urlBasePrivate + objectKey + '/all');
                 };
               }
               this.getAll = getAllFun;
@@ -46,8 +50,28 @@ angular.module('mcc').service('mcc.crud',
                 return http.putViaDefer(urlBasePrivate + objectKey + '/' + obj.id, obj);
               };
               // delete
-              this.remove = function (id) {
-                return http.deleteViaDefer(urlBasePrivate + objectKey + '/' + id);
+              this.delete = function (id) {
+                return http.deleteViaDefer(urlBasePrivate + objectKey + '/' + id)
+              };
+              this.confirmAndRemove = function (id, cb) {
+                var hasCb = arguments.length == 2
+                var dlg = dialogs.confirm(undefined, undefined, {size: 'sm'});
+                dlg.result.then(function () {
+                  http.deleteViaDefer(urlBasePrivate + objectKey + '/' + id).then(
+                          function (reply) {
+                            if ('data' in reply && 'dict' in reply.data) {
+                              toasterTranslate.success(reply.dict);
+                            }
+                            if (hasCb) {
+                              if (cb == 'refresh') {
+                                $window.location.reload();
+                              }
+                              else {
+                                cb(reply);
+                              }
+                            }
+                          });
+                });
               };
             };
           }

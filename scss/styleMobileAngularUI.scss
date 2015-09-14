@@ -170,14 +170,25 @@ figcaption {
 
 input, .mcc-bs-style {
   border: 1px solid #ccc;
-  padding: 6px 12px;
-  border-radius: 4px;  
-  display: block;  
+  border-radius: 4px;    
+  display: block;
+}
+
+.mcc-bs-style-container, .mcc-bs-style {  
+  padding-top: 6px;  
+  padding-bottom: 12px;
+      
+}
+
+.mcc-bs-style-container input {
+  padding: 0px;
+  margin: 0px;
 }
 
 .mcc-bs-style-heading {
   line-height: 34px;
   font-weight: 700;
+  display: block;
 }
 
 input {
@@ -221,4 +232,13 @@ img.embed-media {
 
 .list-group-item > * {
   max-width: 800px;
+}
+
+.switch.active {
+  background-color: $color-theme !important;
+  border-color: $color-theme !important;
+}
+
+.switch-handle {
+  border-color: $color-theme !important;
 }

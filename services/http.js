@@ -22,6 +22,7 @@ angular.module('mcc').service('mcc.$http',
                           headers: headers,
                           config: config
                         };
+                        console.log(reply);
                         def.resolve(reply);
                       }).
                       error(function (data, status, headers, config) {

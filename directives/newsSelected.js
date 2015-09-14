@@ -75,7 +75,7 @@ angular.module('mcc').directive('mccNewsSelected', [
         $scope.postComment = function () {
           $http({method: 'POST',
             data: $scope.comment,
-            url: 'rest/news/comment/' + $scope.id}).
+            url: 'rest/mcc/news/comment/' + $scope.id}).
                   success(function (data, status, headers, config) {
                     toasterTranslate.success(data.dict);
                     resetComments();
